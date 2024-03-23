@@ -1,7 +1,6 @@
 import {useEffect} from 'react';
 import useTodoViewModel from '../view-models/useTodoViewModel';
 import {TodoItemType} from '../types/genericTypes';
-import {screenMap} from '../navigation/screenMap';
 import {useNavigation} from '@react-navigation/native';
 
 const useHomeTodoController = () => {
@@ -11,10 +10,14 @@ const useHomeTodoController = () => {
   useEffect(() => {});
 
   const onPressTodoItem = (todoItem: TodoItemType) => {
-    navigation.navigate(screenMap.UpdateTodo, {todoItem});
+    navigation.navigate('UpdateTodo', {todoItem});
+    console.log('UpdateTodo');
   };
 
-  const onPressCreate = () => navigation.navigate(screenMap.NewTodo);
+  const onPressCreate = () => {
+    navigation.navigate('NewTodo');
+    console.log('NewTodo');
+  };
 
   return {
     todos,
