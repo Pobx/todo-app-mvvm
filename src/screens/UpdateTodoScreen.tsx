@@ -5,15 +5,14 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {TodoItemType} from '../types/genericTypes';
 import useUpdateTodoController from '../view-controllers/useUpdateTodoController';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../navigation/rootStackParamList';
 
-interface UpdateTodoScreenProps {
-  route: {params: {todoItem: TodoItemType}};
-}
+type Props = NativeStackScreenProps<RootStackParamList, 'UpdateTodo'>;
 
-const UpdateTodoScreen = (props: UpdateTodoScreenProps) => {
-  const {todoItem} = props.route.params;
+const UpdateTodoScreen = ({route}: Props) => {
+  const todoItem = route.params.todoItem;
   const {todoText, onChangeText, onClickDelete, onClickUpdate} =
     useUpdateTodoController(todoItem);
 
